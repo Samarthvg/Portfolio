@@ -13,8 +13,9 @@ export default function Work() {
         Work experience
       </h2> 
 
-      <div className="container">
-        <div className="row mb-4">
+    <div style={{position:"relative"}}>
+    <div className="container timeline">
+        <div className="row mb-4"> 
           <div className="col-md-6 d-flex justify-content-center" style={{ position: "relative" }}>
             <div className="">
               <img className="company-logo" src="/images/simform.png" alt="" />
@@ -56,6 +57,7 @@ export default function Work() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
