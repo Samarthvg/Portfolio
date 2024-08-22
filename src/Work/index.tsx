@@ -1,63 +1,40 @@
 import { useInView } from "react-intersection-observer";
 import "../Styles/index.scss";
+import Navbar from "../Navbar";
+import Projects from "./Projects";
 
 export default function Work() {
   const { ref: myRef, inView: isVisible } = useInView();
 
   return (
-    <div
-      className={`bg-dark py-5 text-light my-5 ${isVisible ? "show" : "hidden"}`}
-      id="wd-work"
-    >
-      <h2 className="mb-5 text-center">
-        Work experience
-      </h2> 
+    <div className="container pt-5">
+      <Navbar />
+      <div
+        className="py-5 text-light my-5 d-flex flex-column align-items-center"
+        id="wd-work"
+      >
+        <div className="">
+          <h1>Experience</h1>
+          <div className="block my-5">
+            <h3 className="wd-company">Simform</h3>
+            <h4 className="wd-role">Web Developer</h4>
+            <h5>2021-2022</h5>
+          </div>
 
-    <div style={{position:"relative"}}>
-    <div className="container timeline">
-        <div className="row mb-4"> 
-          <div className="col-md-6 d-flex justify-content-center" style={{ position: "relative" }}>
-            <div className="">
-              <img className="company-logo" src="/images/simform.png" alt="" />
-              <div className="p-4 company-wrapper bg-secondary rounded-4" id="wd-simform">
-                <h3 className="wd-role">
-                  Simform <br /> Frontend Developer
-                </h3>
-                <h5 ref={myRef}>2021-2022</h5>
-              </div>
-            </div>
+          <div className="block my-5">
+            <h3 className="wd-company">CHARUSAT</h3>
+            <h4 className="wd-role">NLP Researcher</h4>
+            <h5>2021-2022</h5>
+          </div>
+
+          <div className="block my-5">
+            <h3 className="wd-company">JSBot</h3>
+            <h4 className="wd-role">JavaScript Developer</h4>
+            <h5>2021-2022</h5>
           </div>
         </div>
-
-        <div className="row mb-4 justify-content-end">
-          <div className="col-md-6 d-flex justify-content-center" style={{ position: "relative" }}>
-            <div className="">
-              <img className="company-logo right" ref={myRef} src="/images/charusat.png" alt="" />
-              <div className="p-4 company-wrapper bg-secondary rounded-4" id="wd-charusat">
-                <h3 className="wd-role">
-                  CHARUSAT <br /> NLP Researcher
-                </h3>
-                <h5>2021-2022</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="row mb-4">
-          <div className="col-md-6 d-flex justify-content-center" style={{ position: "relative" }}>
-            <div className="">
-              <img className="company-logo border border-secondary border-2 p-1" src="/images/jsbot.png" alt="" />
-              <div className="p-4 company-wrapper bg-secondary rounded-4" id="wd-jsbot">
-                <h3 className="wd-role">
-                  JSBot <br /> JavaScript Developer
-                </h3>
-                <h5>2021-2022</h5>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Projects />
       </div>
-    </div>
     </div>
   );
 }

@@ -1,52 +1,79 @@
-
+nav{
+  background-color: transparent;
+}
 .hidden{
-    opacity: 0;
-    transition:all 0.3s;
+  opacity: 0;
+  transition:all 1s;
 }
 
 .show{
-  opacity: 1;
-  transition: all 0.3s;
+opacity: 1;
+transition: all 1s;
 }
 
 @media (prefers-reduced-motion) {
-    .hidden {
-     transition: none;
-    }
+  .hidden {
+   transition: none;
   }
-
-
-.company-logo {
-    position: absolute;
-    width: 40px;
-    border-radius: 50px;
-    right: -20px;
-    z-index: 2;
-    top: 32px;
 }
 
-.right{
-    left:-20px;
+.uses-item{
+height: 150px;
+width: 150px;
+} 
+
+.about-para{
+font-size: 20px;
 }
 
-.company-wrapper{
-    min-width: 400px;
+.container {
+display: flex;
+flex-direction: column;
 }
 
-.timeline::after{
-    content: '';
-    position: absolute;
-    width: 6px;
-    background: rgba(19, 67, 98, 0.329);
-    top: 0;
-    left: 50%;
-    margin-left: -3px;
-    z-index: 1;
-    height: 100%;
-
+.content {
+display: flex;
 }
 
+.left-pane {
+  position: fixed;
+  top: 0; 
+  left:350px;
+  width: 40%;
+  height: 100vh; 
+  margin-top: 150px;
+  color: #fff;
+  padding: 20px;
+  transform: scale(0.3); 
+  transform-origin: top left; 
+}
+.scroll-content {
+position: relative;
+}
 
+.right-pane {
+width: 60%;
+overflow-y: auto;
+margin-left: 600px;
+}
 
+section {
+margin-bottom: 100px;
+}
 
+.scroll-content > div {
+padding: 10px;
+margin-bottom: 20px;
+}
 
+.scroll-content .active {
+border: 3px solid white; 
+padding: 30px;
+border-radius: 5px; 
+border-radius: 20px;  
+}
+
+.uses-item:hover{
+  background-color: rgb(47, 65, 79) !important;
+  transition: all 0.3;
+}

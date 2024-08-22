@@ -1,51 +1,57 @@
+import React, { useState } from "react";
+import { useInView } from "react-intersection-observer";
+import Navbar from "../Navbar";
 import Hero from "../Hero";
-import Projects from "../Projects";
-import Work from "../Work";
+import Tech from "../Tech";
+import Uses from "../Uses";
+
 export default function LandingPage() {
-    return (
-      <div className="container-fluid">
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div>
-            <a href="/" className="navbar-brand">
-              Samarth.
-            </a>
-  
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
+  const [activeSection, setActiveSection] = useState(0);
+
+  const { ref: heroRef, inView: heroInView } = useInView({
+    threshold: 0.5,
+    onChange: (inView) => inView && setActiveSection(0),
+  });
+
+  const { ref: techRef, inView: techInView } = useInView({
+    threshold: 0.5,
+    onChange: (inView) => inView && setActiveSection(1),
+  });
+
+  const { ref: usesRef, inView: usesInView } = useInView({
+    threshold: 0.5,
+    onChange: (inView) => inView && setActiveSection(2),
+  });
+
+  return (
+    <div className="container">
+      <Navbar />
+      <div className="content">
+        <div className="left-pane">
+          <div className="scroll-content">
+            <div className={activeSection === 0 ? 'active' : ''}>
+               <Hero />
+            </div>
+            <div className={activeSection === 1 ? 'active' : ''}>
+              <Tech />
+            </div>
+            <div className={activeSection === 2 ? 'active' : ''}>
+              <Uses />
+            </div>
           </div>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mx-auto">
-              <li className="nav-item">
-                <a href="/about" className="nav-link">
-                  About
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="/work" className="nav-link">
-                  Work
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="/contact" className="nav-link">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <Hero/>
-        <Work/>
-       <Projects/>
+        </div>
+        <div className="right-pane">
+          <section ref={heroRef}>
+            <Hero />
+          </section>
+          <section ref={techRef}>
+            <Tech />
+          </section>
+          <section ref={usesRef}>
+            <Uses />
+          </section>
+        </div>
       </div>
-    );
-  }
-  
+    </div>
+  );
+}
